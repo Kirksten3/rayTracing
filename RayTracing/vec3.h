@@ -18,6 +18,7 @@ class Vec3
         Vec3    operator+( const Vec3& );
         Vec3    operator-( const Vec3& );       // binary -
 	   Vec3	 operator*( float );
+	   Vec3	 operator*( const Vec3& );
         Vec3    operator-( );                   // unary -
         Vec3    Cross( Vec3& );
         float   Dot( Vec3& );

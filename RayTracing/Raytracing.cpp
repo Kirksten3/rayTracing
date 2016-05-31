@@ -63,7 +63,32 @@ png::rgb_pixel Trace(int i, int j) {
 	   }
     }*/
 
-    Vec3 color = temp.getColor() * 255.f;
+    //diffuse calculation
+    Vec3 surfaceToLight = (lightArray[0].getCenter() - point).Unit();
+    float diffuseCoefficient = max(0.0, normal.Dot(surfaceToLight));
+    
+    Vec3 diffuse = (temp.getColor() * lightArray[0].getColor()) * diffuseCoefficient;
+    
+    //ambient
+    Vec3 ambient = (temp.getColor() * lightArray[0].getColor()) * temp.getLightProperties().x;
+
+    //specular calculation
+    Vec3 incidenceVector = surfaceToLight * -1.;
+    //angle of incidence = angle of reflection
+    Vec3 reflectionVector = incidenceVector - ((normal * 2) * incidenceVector.Dot(normal));
+    Vec3 surfaceToCamera = (EyePosition - point).Unit();
+    float cosAngle = max(0.0, surfaceToCamera.Dot(reflectionVector));
+    float specularCoefficient = pow(cosAngle, temp.getLightProperties().z);
+    Vec3 specular = temp.getColor() * specularCoefficient;
+
+    float distanceToLight = (lightArray[0].getCenter() - point).Length();
+    float attenuation = 1.0 / (1.0 + 0.1*distanceToLight * distanceToLight*distanceToLight);
+
+    Vec3 color = ambient + ((diffuse * specular) * attenuation);
+
+    color = color * 255.f;
+
+    //Vec3 color = temp.getColor() * 255.f;
     /*if (color.x != 0. || color.y != 0. || color.z != 0.) {
 	   printf("SUCCESS\n");
     }*/

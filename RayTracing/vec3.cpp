@@ -15,6 +15,15 @@ Vec3::operator*(float val) {
     result.z = this->z * val;
     return result;
 }
+Vec3
+Vec3::operator*( const Vec3& that ) {
+    Vec3 result;
+    result.x = this->x * that.x;
+    result.y = this->y * that.y;
+    result.z = this->z * that.z;
+
+    return *this;
+}
 
 Vec3&
 Vec3::operator=( const Vec3& rhs )

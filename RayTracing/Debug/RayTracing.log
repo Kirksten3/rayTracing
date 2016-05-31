@@ -1,11 +1,13 @@
-﻿Build started 5/30/2016 9:40:56 PM.
+﻿Build started 5/30/2016 10:19:37 PM.
      1>Project "C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\RayTracing\RayTracing.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\libpng.1.6.20.1\build\native\../..//build/native/include/" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\zlib.v120.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\include" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\../..//build/native/include/" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\../..///build/native/include/" /I"C:\Users\Kirk\Documents\Visual Studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\include\png++" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_LIBPNG /D HAS_PNGPP /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Raytracing.cpp
          Raytracing.cpp
      1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(52): warning C4244: 'argument' : conversion from 'double' to 'png::byte', possible loss of data
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(62): warning C4244: 'argument' : conversion from 'double' to 'png::byte', possible loss of data
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(70): warning C4244: 'argument' : conversion from 'float' to 'png::byte', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(68): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(80): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(85): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(95): warning C4244: 'argument' : conversion from 'float' to 'png::byte', possible loss of data
      1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(39): warning C4756: overflow in constant arithmetic
      1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(39): warning C4756: overflow in constant arithmetic
        Link:
@@ -18,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.92
+Time Elapsed 00:00:00.96

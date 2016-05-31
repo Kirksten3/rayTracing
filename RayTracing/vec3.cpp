@@ -7,6 +7,15 @@ Vec3::Vec3( float v0, float v1, float v2 )
 	this->z = v2;
 }
 
+Vec3
+Vec3::operator*(float val) {
+    Vec3 result;
+    result.x = this->x * val;
+    result.y = this->y * val;
+    result.z = this->z * val;
+    return result;
+}
+
 Vec3&
 Vec3::operator=( const Vec3& rhs )
 {
@@ -101,8 +110,15 @@ Vec3::Unit( )
 	// "this" is a pointer to this class's vec3  (this->name)
 	float len = this->Length( );
 	Vec3 result;
-	result.x = this->x / len;;
-	result.y = this->y / len;;
-	result.z = this->z / len;;
+	if (len == 0) {
+	   result.x = 0;
+	   result.y = 0;
+	   result.z = 0;
+	}
+	else {
+	    result.x = this->x / len;
+	    result.y = this->y / len;
+	    result.z = this->z / len;
+	}
 	return result;
 }

@@ -1,18 +1,20 @@
-﻿Build started 5/30/2016 10:19:37 PM.
+﻿Build started 6/2/2016 8:19:15 PM.
      1>Project "C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\RayTracing\RayTracing.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\libpng.1.6.20.1\build\native\../..//build/native/include/" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\zlib.v120.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\include" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\../..//build/native/include/" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\../..///build/native/include/" /I"C:\Users\Kirk\Documents\Visual Studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\include\png++" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_LIBPNG /D HAS_PNGPP /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Raytracing.cpp
-         Raytracing.cpp
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(52): warning C4244: 'argument' : conversion from 'double' to 'png::byte', possible loss of data
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(68): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(80): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(85): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(95): warning C4244: 'argument' : conversion from 'float' to 'png::byte', possible loss of data
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(39): warning C4756: overflow in constant arithmetic
-     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing.cpp(39): warning C4756: overflow in constant arithmetic
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\libpng.1.6.20.1\build\native\../..//build/native/include/" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\zlib.v120.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\include" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\../..//build/native/include/" /I"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\../..///build/native/include/" /I"C:\Users\Kirk\Documents\Visual Studio 2013\Projects\RayTracing\packages\pngpp.0.2.7.1\build\native\include\png++" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_LIBPNG /D HAS_PNGPP /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt raytracing2.cpp
+         raytracing2.cpp
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(97): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(115): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(116): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(133): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(135): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(146): warning C4244: 'argument' : conversion from 'float' to 'png::byte', possible loss of data
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(48): warning C4756: overflow in constant arithmetic
+     1>c:\users\kirk\documents\visual studio 2013\projects\raytracing\raytracing\raytracing2.cpp(48): warning C4756: overflow in constant arithmetic
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\Debug\RayTracing.exe" /INCREMENTAL /NOLOGO "C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\libpng.1.6.20.1\build\native\../..//build/native/lib/Win32\v120\dynamic\Debug\libpng16.lib" "C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\packages\zlib.v120.windesktop.msvcstl.dyn.rt-dyn.1.2.8.8\build\native\..\..\lib\native\v120\windesktop\msvcstl\dyn\rt-dyn\Win32\Debug\zlibd.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\Debug\RayTracing.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\Debug\RayTracing.lib" /MACHINE:X86 Debug\ray.obj
          Debug\Raytracing.obj
+         Debug\raytracing2.obj
          Debug\sphere.obj
          Debug\vec3.obj
          RayTracing.vcxproj -> C:\Users\Kirk\documents\visual studio 2013\Projects\RayTracing\Debug\RayTracing.exe
@@ -20,4 +22,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.96
+Time Elapsed 00:00:01.28

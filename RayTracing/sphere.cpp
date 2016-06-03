@@ -68,6 +68,50 @@ bool Sphere::isInsideSphere(Vec3 point, Sphere sphere) {
     return (r < sphere.getRadius());
 }
 
+bool Sphere::Intersect2(Ray ray, float &t0, Vec3& point, Vec3& normal) {
+    float a, b, c, t1, discriminant;
+    a = ray.direction.x * ray.direction.x + ray.direction.y * ray.direction.y + ray.direction.z * ray.direction.z;
+    b = 2 * (ray.direction.x * (ray.origin.x - this->center.x) + ray.direction.y * (ray.origin.y - this->center.y) + ray.direction.z * (ray.origin.z - this->center.z));
+    c = pow((ray.origin.x - this->center.x), 2) + pow((ray.origin.y - this->center.y), 2) + pow((ray.origin.z - this->center.z), 2) - (this->radius * this->radius);
+
+    discriminant = pow(b, 2) - (4 * a * c);
+
+    if (discriminant < 0.) return false;
+
+    t0 = (-b - sqrt(pow(b, 2) - (4 * a * c))) / 2;
+    t1 = (-b + sqrt(pow(b, 2) - (4 * a * c))) / 2;
+
+    if (t0 < 0.) {
+	   std::swap(t0, t1);
+    }
+
+    point = Vec3(ray.origin.x + (ray.direction.x * t0), ray.origin.y + (ray.direction.y * t0), ray.origin.z + (ray.direction.z * t0));
+    normal = Vec3((point.x - this->center.x)/this->radius, (point.y - this->center.y)/this->radius, (point.z - this->center.z)).Unit();
+
+    return true;
+}
+
+//light intersect function
+bool Sphere::Intersect2(Ray ray) {
+    float a, b, c, t0, t1, discriminant;
+    a = ray.direction.x * ray.direction.x + ray.direction.y * ray.direction.y + ray.direction.z * ray.direction.z;
+    b = 2 * (ray.direction.x * (ray.origin.x - this->center.x) + ray.direction.y * (ray.origin.y - this->center.y) + ray.direction.z * (ray.origin.z - this->center.z));
+    c = pow((ray.origin.x - this->center.x), 2) + pow((ray.origin.y - this->center.y), 2) + pow((ray.origin.z - this->center.z), 2) - (this->radius * this->radius);
+
+    discriminant = pow(b, 2) - (4 * a * c);
+
+    if (discriminant < 0.) return false;
+
+    t0 = (-b - sqrt(pow(b, 2) - (4 * a * c))) / 2;
+    t1 = (-b + sqrt(pow(b, 2) - (4 * a * c))) / 2;
+
+    if (t0 < 0.) {
+	   std::swap(t0, t1);
+    }
+
+    return true;
+}
+
 bool Sphere::Intersect(Ray ray, Vec3 &point, Vec3 &normal) {
     Vec3 lVec = this->center - ray.origin;
 
@@ -95,7 +139,7 @@ bool Sphere::Intersect(Ray ray, Vec3 &point, Vec3 &normal) {
 
     if (t0 < 0) {
 	   t0 = t1;
-	   if (t0 , 0) return false;
+	   if (t0 < 0) return false;
     }
 
     point = ray.origin + (ray.direction * t0);
@@ -131,7 +175,7 @@ bool Sphere::Intersect(Ray ray) {
 
     if (t0 < 0) {
 	   t0 = t1;
-	   if (t0 , 0) return false;
+	   if (t0 < 0) return false;
     }
 
     return true;

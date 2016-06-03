@@ -13,6 +13,8 @@ public:
     bool getIsLight();
     bool getIsSet();
     bool isInsideSphere(Vec3, Sphere);
+    bool Intersect2(Ray, float&, Vec3&, Vec3&);
+    bool Intersect2(Ray);
     bool Intersect(Ray, Vec3&, Vec3&);
     bool Intersect(Ray);
     void Print();

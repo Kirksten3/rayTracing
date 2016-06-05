@@ -25,17 +25,36 @@ Vec3 mix(Vec3 a, Vec3 b, float i) {
     return output;
 }
 
+float clamp(float a) {
+    if ( a > 1. ) {
+	   return 1.;
+    }
+    else if( a < 0. ) {
+	   return 0.;
+    }
+    else {
+	   return a;
+    }
+}
+
+Vec3 clamp(Vec3 a) {
+    a.x = clamp(a.x);
+    a.y = clamp(a.y);
+    a.z = clamp(a.z);
+    return a;
+}
+
 int setScene() {
     //spheres
-    sphereArray[0] = Sphere(Vec3(0., 0., 10.), 5, Vec3(1., 0., 0.), Vec3(0.5, 0.5, 0.5), false);
-    sphereArray[1] = Sphere(Vec3(3., 3., 5.), 3, Vec3(0., 1., 0.), Vec3(0.5, 0.5, 0.5), false);
+    sphereArray[0] = Sphere(Vec3(0., 0., 10.), 5, Vec3(1., 0., 0.), Vec3(0.2, 0.8, 0.7), false);
+    sphereArray[1] = Sphere(Vec3(3., 3., 5.), 3, Vec3(0., 1., 0.), Vec3(0.6, 0.4, 0.2), false);
     /*sphereArray[1] = Sphere(Vec3(300., 600., 5.), 15, Vec3(0., 1., 0.), Vec3(0.5, 0.5, 0.5), false);
     sphereArray[2] = Sphere(Vec3(500., 300., 10.), 35, Vec3(0., 0., 1.), Vec3(0.5, 0.5, 0.5), false);
     sphereArray[3] = Sphere(Vec3(800., 900., 20.), 60, Vec3(1., 0., 1.), Vec3(0.5, 0.5, 0.5), false);
     sphereArray[4] = Sphere(Vec3(950., 500., 0.), 55, Vec3(1., 1., 0.), Vec3(0.5, 0.5, 0.5), false);*/
 
     //light
-    lightArray[0] = Sphere(Vec3(-3., 0., 10.), 1, Vec3(1., 1., 1.), Vec3(0.5, 0.5, 0.5), false);
+    lightArray[0] = Sphere(Vec3(0., 10., 10.), 1, Vec3(0., 0., 1.), Vec3(0.5, 0.5, 0.5), false);
 
     return 0;
 }
@@ -61,43 +80,64 @@ Vec3 Trace(Ray ray) {
 
     else {
 	   if (ray.direction.Dot(normal) > 0) normal = -normal;
-	   //if (ray.depth < 5) {
+	   if (ray.depth < 200) {
 		  //float facingRatio = -ray.direction.Dot(normal);
 		  //float fresnelEffect = mix(pow(1 - facingRatio, 3), 1., 0.1);
 
-		  //Vec3 reflectionDir = ray.direction - (normal * 2 * ray.direction.Dot(normal));
-		  //reflectionDir = reflectionDir.Unit();
 
-		  //Ray reflectionRay = Ray(point, reflectionDir);
+		  float spec, diff;
+		  spec = diff = 0.;
+		  
+		  // light direction
+		  Vec3 lightDirection = lightArray[0].getCenter() - point;
+		  lightDirection = lightDirection.Unit();
 
-		  ////increment depth
-		  //reflectionRay.depth = ray.depth + 1;
+		  Vec3 reflectionDir = ray.direction - (normal * 2 * ray.direction.Dot(normal));
+		  reflectionDir = reflectionDir.Unit();
 
-		  //Vec3 reflection = Trace(reflectionRay);
-		  //
+		  spec += reflectionDir.Dot(ray.direction) * reflectionDir.Dot(ray.direction) * reflectionDir.Dot(ray.direction);
+		  diff += normal.Dot(lightDirection);
+
+		  color = spec * temp.getLightProperties().z + diff * temp.getLightProperties().y;
+
+		  Ray reflectionRay = Ray(point, reflectionDir);
+
+		  //increment depth
+		  reflectionRay.depth = ray.depth + 1;
+
+		  Vec3 reflection = Trace(reflectionRay);
+		  
 		  //color = reflection * fresnelEffect * temp.getColor();
-		  ////color = temp.getColor();
-		  ////color = mix(color, lightColor, .1);
-	   //}
-
-	   else {
-		  for (int i = 0; i < lightArrLen; i++) {
-			 float transmission = 1.;
-			 Vec3 lightDirection = lightArray[i].getCenter() - point;
-			 lightDirection = lightDirection.Unit();
-
-			 Ray lightRay = Ray(point, lightDirection);
-
-			 for (int j = 0; j < sphereArrLen; j++) {
-				if (sphereArray[j].Intersect2(lightRay)) {
-				    transmission = 0.;
-				    break;
-				}
-			 }
-			 color = color + (temp.getColor() * transmission * max(0., normal.Dot(lightDirection)) * lightArray[i].getColor());
-			 //color = mix(color, color2, 1.);
-		  }
+		  color = color + reflection;// * temp.getColor();
+		  color = clamp(color);
+		  //color = temp.getColor();
+		  //color = mix(color, lightColor, .1);
+		  return color;
 	   }
+
+	   //else {
+		  //for (int i = 0; i < lightArrLen; i++) {
+			 //float transmission = 1.;
+			 //Vec3 lightDirection = lightArray[i].getCenter() - point;
+			 //lightDirection = lightDirection.Unit();
+
+			 //Ray lightRay = Ray(point, lightDirection);
+
+			 //for (int j = 0; j < sphereArrLen; j++) {
+				//if (sphereArray[j].Intersect2(lightRay)) {
+				//    transmission = 0.;
+				//    break;
+				//}
+			 //}
+
+			 //float shade = lightDirection.Dot(normal);
+			 //if (shade < 0.) shade = 0.;
+			 //color = temp.getColor() * transmission * (temp.getLightProperties().x + temp.getLightProperties().y * shade);
+
+			 ////color = color + (temp.getColor() * transmission * max(0., normal.Dot(lightDirection)) * lightArray[i].getColor());
+			 ////color = mix(color, color2, 1.);
+		  //}
+	   //}
     }
 
     return color + temp.getColor();
